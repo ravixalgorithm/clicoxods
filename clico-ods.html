@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Writing Challenge — Clico × ODS</title>
+<meta name="description" content="Use AI to supercharge your writing. Win up to ₹10,000 in cash. Open to all Indian college students. Apr 17–25.">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#CEC4FF;
+  --black:#0F0E0E;
+  --white:#F6F2EB;
+  --orange:#D94F2B;
+  --lime:#C8EA48;
+  --muted:rgba(15,14,14,0.42);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--black);overflow-x:hidden}
+
+/* NAV */
+nav{
+  position:sticky;top:0;z-index:99;
+  background:var(--bg);border-bottom:1.5px solid rgba(0,0,0,0.13);
+  padding:14px 48px;display:flex;align-items:center;justify-content:space-between;
+}
+@media(max-width:600px){nav{padding:12px 20px}}
+.nav-wordmark{font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase}
+.nav-wordmark span{opacity:.28;margin:0 5px}
+.nav-pill{
+  background:var(--black);color:var(--white);font-family:'Syne',sans-serif;
+  font-size:13px;font-weight:700;padding:9px 22px;border-radius:100px;
+  border:none;text-decoration:none;display:inline-block;transition:opacity .15s;
+}
+.nav-pill:hover{opacity:.75}
+
+/* HERO */
+.hero{
+  background:var(--bg);padding:0 48px 0;
+  display:grid;grid-template-columns:1.1fr .9fr;
+  min-height:94vh;align-items:center;position:relative;overflow:hidden;
+}
+@media(max-width:860px){.hero{grid-template-columns:1fr;padding:60px 24px 40px;min-height:auto}}
+
+.hero-circle{
+  position:absolute;right:-180px;top:50%;transform:translateY(-50%);
+  width:600px;height:600px;border-radius:50%;
+  background:rgba(0,0,0,0.06);pointer-events:none;
+}
+.hero-circle2{
+  position:absolute;right:120px;top:50%;transform:translateY(-50%);
+  width:320px;height:320px;border-radius:50%;
+  background:rgba(0,0,0,0.04);pointer-events:none;
+}
+
+.hero-left{position:relative;z-index:2;padding:80px 0}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--muted);margin-bottom:28px;
+}
+.eyebrow-dot{width:8px;height:8px;border-radius:50%;background:var(--orange);display:inline-block;animation:pulse 1.8s ease-in-out infinite}
+.hero h1{
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:clamp(64px,9vw,128px);line-height:.88;letter-spacing:-3px;margin-bottom:32px;
+}
+.hero h1 strong{
+  font-family:'Syne',sans-serif;font-style:normal;font-weight:900;
+  display:block;font-size:.68em;letter-spacing:-4px;
+}
+.hero-desc{font-size:17px;line-height:1.7;color:var(--muted);max-width:420px;margin-bottom:40px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:56px}
+.btn-dark{
+  background:var(--black);color:var(--white);font-family:'Syne',sans-serif;
+  font-size:15px;font-weight:700;padding:14px 32px;border-radius:100px;
+  border:none;text-decoration:none;display:inline-block;transition:transform .15s;
+}
+.btn-dark:hover{transform:scale(1.03)}
+.btn-outline{
+  background:transparent;color:var(--black);font-family:'Syne',sans-serif;
+  font-size:15px;font-weight:700;padding:14px 32px;border-radius:100px;
+  border:2px solid rgba(0,0,0,.2);text-decoration:none;display:inline-block;transition:border-color .15s;
+}
+.btn-outline:hover{border-color:var(--black)}
+
+.hero-floats{display:flex;flex-direction:column;gap:12px;align-items:flex-end;position:relative;z-index:2}
+@media(max-width:860px){.hero-floats{align-items:flex-start}}
+.float-card{border-radius:20px;padding:24px 28px;width:100%;max-width:340px}
+.float-card.fc-black{background:var(--black)}
+.float-card.fc-orange{background:var(--orange);position:relative;overflow:hidden}
+.float-card.fc-lime{background:var(--lime);display:flex;align-items:center;gap:16px;padding:18px 24px}
+.fc-label{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+.fc-black .fc-label{color:rgba(255,255,255,.3)}
+.fc-orange .fc-label{color:rgba(255,255,255,.55)}
+.fc-lime .fc-label{color:rgba(0,0,0,.4)}
+.fc-val{font-size:52px;font-weight:900;letter-spacing:-3px;line-height:1}
+.fc-black .fc-val{color:var(--lime)}
+.fc-orange .fc-val{color:var(--white)}
+.fc-lime .fc-val{color:var(--black)}
+.fc-sub{font-size:13px;margin-top:6px;line-height:1.45}
+.fc-black .fc-sub{color:rgba(255,255,255,.3)}
+.fc-orange .fc-sub{color:rgba(255,255,255,.75);font-weight:600}
+.fc-lime .fc-sub{color:rgba(0,0,0,.45)}
+.cd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:6px}
+.cd-cell{background:rgba(255,255,255,.07);border-radius:8px;padding:12px 4px;text-align:center}
+.cd-num{font-size:30px;font-weight:900;color:var(--lime);line-height:1;letter-spacing:-2px;display:block}
+.cd-unit{font-size:9px;color:rgba(255,255,255,.28);letter-spacing:1.5px;text-transform:uppercase;margin-top:3px;display:block}
+
+.stat-row{display:flex;gap:8px;flex-wrap:wrap}
+.stat-pill{
+  background:rgba(0,0,0,.09);border-radius:100px;padding:9px 16px;
+  font-size:12px;font-weight:700;display:flex;align-items:center;gap:7px;
+}
+.sdot{width:5px;height:5px;border-radius:50%;background:var(--orange);flex-shrink:0}
+
+/* MARQUEE */
+.marquee-strip{background:var(--black);padding:15px 0;overflow:hidden;white-space:nowrap}
+.marquee-inner{display:inline-flex;animation:marquee 26s linear infinite}
+.marquee-inner span{font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.2);padding:0 24px}
+.marquee-inner span.hi{color:var(--lime)}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+.section-label{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:36px;display:flex;align-items:center;gap:10px}
+.section-label::before{content:'';display:block;width:20px;height:1.5px;background:currentColor}
+
+/* HOW IT WORKS */
+.how{background:var(--white);padding:96px 48px;position:relative;overflow:hidden}
+@media(max-width:600px){.how{padding:64px 24px}}
+.how-grid-bg{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(0,0,0,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.04) 1px,transparent 1px);
+  background-size:48px 48px;pointer-events:none;
+}
+.how h2{
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:clamp(44px,6vw,84px);line-height:.92;letter-spacing:-2.5px;margin-bottom:64px;position:relative;
+}
+.how h2 strong{font-family:'Syne',sans-serif;font-style:normal;font-weight:900}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:rgba(0,0,0,.08);position:relative}
+@media(max-width:800px){.steps{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.steps{grid-template-columns:1fr}}
+.step{background:var(--white);padding:36px 28px;position:relative}
+.step-graphic{margin-bottom:20px}
+.step-n{
+  font-family:'Instrument Serif',serif;font-style:italic;font-size:68px;font-weight:400;
+  line-height:1;color:rgba(0,0,0,.08);margin-bottom:16px;
+}
+.step h3{font-size:17px;font-weight:800;margin-bottom:8px;letter-spacing:-.4px}
+.step p{font-size:13px;line-height:1.65;color:var(--muted)}
+.step-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--orange);text-decoration:none}
+
+/* PRIZES */
+.prizes{background:var(--black);padding:96px 48px;position:relative;overflow:hidden}
+@media(max-width:600px){.prizes{padding:64px 24px}}
+.prizes-deco{position:absolute;right:-60px;top:-60px;opacity:.05;pointer-events:none}
+.prizes h2{
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:clamp(44px,6vw,84px);line-height:.92;letter-spacing:-2.5px;
+  color:var(--white);margin-bottom:28px;position:relative;
+}
+.prizes h2 strong{font-family:'Syne',sans-serif;font-style:normal;font-weight:900}
+.prize-subtitle{color:rgba(255,255,255,.5);font-size:15px;max-width:560px;margin-bottom:56px;line-height:1.6;position:relative}
+.prize-subtitle b{color:var(--lime);font-weight:800}
+.prize-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:820px;position:relative;margin-bottom:20px}
+@media(max-width:700px){.prize-grid{grid-template-columns:1fr}}
+.prize-card{border-radius:24px;padding:36px 28px;position:relative;overflow:hidden}
+.prize-card.p1{background:var(--lime)}
+.prize-card.p2{background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.1)}
+.prize-card.p3{background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.07)}
+.pc-deco{position:absolute;bottom:-20px;right:-20px;opacity:.18}
+.prize-pos{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:24px}
+.p1 .prize-pos{color:rgba(0,0,0,.38)}
+.p2 .prize-pos,.p3 .prize-pos{color:rgba(255,255,255,.3)}
+.prize-val{font-size:clamp(46px,5vw,64px);font-weight:900;letter-spacing:-3px;line-height:1}
+.p1 .prize-val{color:var(--black)}
+.p2 .prize-val,.p3 .prize-val{color:var(--white)}
+.prize-note{font-size:12px;margin-top:10px}
+.p1 .prize-note{color:rgba(0,0,0,.38)}
+.p2 .prize-note,.p3 .prize-note{color:rgba(255,255,255,.28)}
+
+/* UNLOCK MILESTONES */
+.unlocks{max-width:820px;margin-top:36px;position:relative}
+.unlock-head{font-size:11px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--lime);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.unlock-head::before{content:'';display:block;width:20px;height:1.5px;background:var(--lime)}
+.unlock-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:700px){.unlock-grid{grid-template-columns:1fr}}
+.unlock-card{
+  background:rgba(200,234,72,.05);border:1.5px solid rgba(200,234,72,.18);
+  border-radius:20px;padding:24px 26px;
+}
+.unlock-goal{display:inline-flex;align-items:center;gap:6px;background:rgba(200,234,72,.12);color:var(--lime);font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:5px 12px;border-radius:100px;margin-bottom:14px}
+.unlock-title{font-size:20px;font-weight:900;color:var(--white);margin-bottom:6px;letter-spacing:-.5px}
+.unlock-detail{font-size:13px;color:rgba(255,255,255,.5);line-height:1.55}
+.unlock-amount{color:var(--lime);font-weight:800}
+
+.prize-extras{margin-top:40px;padding-top:28px;border-top:1.5px solid rgba(255,255,255,.07);display:flex;gap:10px;flex-wrap:wrap;position:relative}
+.prize-tag{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:100px;padding:7px 16px;font-size:11px;color:rgba(255,255,255,.45);font-weight:700}
+
+/* JUDGING */
+.judging{background:var(--orange);padding:96px 48px;position:relative;overflow:hidden}
+@media(max-width:600px){.judging{padding:64px 24px}}
+.judging-deco{position:absolute;left:-80px;bottom:-80px;opacity:.12;pointer-events:none}
+.judging .section-label{color:rgba(255,255,255,.4)}
+.judging h2{
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:clamp(44px,6vw,84px);line-height:.92;letter-spacing:-2.5px;
+  color:var(--white);margin-bottom:64px;position:relative;
+}
+.judging h2 strong{font-family:'Syne',sans-serif;font-style:normal;font-weight:900}
+.criteria{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(255,255,255,.15);position:relative}
+@media(max-width:700px){.criteria{grid-template-columns:1fr}}
+.criterion{background:var(--orange);padding:40px 32px}
+.crit-graphic{margin-bottom:20px}
+.criterion-pct{
+  font-family:'Instrument Serif',serif;font-style:italic;font-size:84px;font-weight:400;
+  line-height:1;color:rgba(255,255,255,.16);margin-bottom:10px;
+}
+.criterion h3{font-size:18px;font-weight:800;color:var(--white);margin-bottom:8px;letter-spacing:-.4px}
+.criterion p{font-size:13px;line-height:1.65;color:rgba(255,255,255,.55)}
+
+/* ELIGIBILITY */
+.elig{background:var(--lime);padding:96px 48px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;position:relative;overflow:hidden}
+@media(max-width:800px){.elig{grid-template-columns:1fr;padding:64px 24px}}
+.elig-deco{position:absolute;right:40px;top:40px;opacity:.14;pointer-events:none}
+.elig .section-label{color:rgba(0,0,0,.35)}
+.elig h2{
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:clamp(40px,5.5vw,72px);line-height:.92;letter-spacing:-2px;
+}
+.elig h2 strong{font-family:'Syne',sans-serif;font-style:normal;font-weight:900}
+.rule-list{list-style:none}
+.rule-item{display:flex;gap:18px;align-items:flex-start;padding:18px 0;border-bottom:1.5px solid rgba(0,0,0,.14)}
+.rule-item:first-child{border-top:1.5px solid rgba(0,0,0,.14)}
+.rule-num{font-family:'Instrument Serif',serif;font-style:italic;font-size:20px;color:rgba(0,0,0,.26);flex-shrink:0;width:26px;line-height:1.3}
+.rule-text h4{font-size:14px;font-weight:800;margin-bottom:2px;letter-spacing:-.3px}
+.rule-text p{font-size:12px;color:rgba(0,0,0,.5);line-height:1.55}
+
+/* TIMELINE */
+.timeline-sec{background:var(--white);padding:96px 48px;position:relative;overflow:hidden}
+@media(max-width:600px){.timeline-sec{padding:64px 24px}}
+.tl-bg{position:absolute;inset:0;background-image:radial-gradient(rgba(0,0,0,.04) 1.5px,transparent 1.5px);background-size:28px 28px;pointer-events:none}
+.timeline-sec h2{
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:clamp(44px,6vw,84px);line-height:.92;letter-spacing:-2.5px;margin-bottom:64px;position:relative;
+}
+.timeline-sec h2 strong{font-family:'Syne',sans-serif;font-style:normal;font-weight:900}
+.tl-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:rgba(0,0,0,.07);position:relative}
+@media(max-width:800px){.tl-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.tl-grid{grid-template-columns:1fr}}
+.tl-cell{background:var(--white);padding:28px 22px;position:relative}
+.tl-cell.active{background:var(--black)}
+.tl-phase{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
+.tl-cell.active .tl-phase{color:rgba(255,255,255,.28)}
+.tl-bar{height:3px;border-radius:2px;background:rgba(0,0,0,.08);margin-bottom:18px;overflow:hidden}
+.tl-cell.active .tl-bar{background:rgba(255,255,255,.08)}
+.tl-fill{height:100%;background:var(--orange);border-radius:2px}
+.tl-cell.active .tl-fill{background:var(--lime)}
+.tl-day{font-size:22px;font-weight:900;letter-spacing:-.6px;margin-bottom:5px;line-height:1.15}
+.tl-cell.active .tl-day{color:var(--white)}
+.tl-event{font-size:12px;color:var(--muted);line-height:1.5}
+.tl-cell.active .tl-event{color:rgba(255,255,255,.42)}
+.live-dot{position:absolute;top:22px;right:22px;width:8px;height:8px;border-radius:50%;background:var(--lime);animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(1.6)}}
+
+/* FAQ */
+.faq{background:var(--bg);padding:96px 48px;position:relative;overflow:hidden}
+@media(max-width:600px){.faq{padding:64px 24px}}
+.faq h2{
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:clamp(44px,6vw,84px);line-height:.92;letter-spacing:-2.5px;margin-bottom:52px;
+}
+.faq h2 strong{font-family:'Syne',sans-serif;font-style:normal;font-weight:900}
+.faq-list{max-width:700px}
+.faq-item{border-top:1.5px solid rgba(0,0,0,.12)}
+.faq-item:last-child{border-bottom:1.5px solid rgba(0,0,0,.12)}
+.faq-q{width:100%;background:none;border:none;font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--black);text-align:left;padding:18px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px}
+.faq-icon{width:24px;height:24px;border-radius:50%;border:1.5px solid rgba(0,0,0,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .2s,background .2s,border-color .2s}
+.faq-icon svg{width:10px;height:10px;stroke:var(--black);transition:stroke .2s;overflow:visible}
+.faq-item.open .faq-icon{background:var(--black);border-color:var(--black);transform:rotate(45deg)}
+.faq-item.open .faq-icon svg{stroke:var(--white)}
+.faq-a{font-size:14px;line-height:1.7;color:var(--muted);overflow:hidden;max-height:0;transition:max-height .3s ease,padding .3s}
+.faq-item.open .faq-a{max-height:240px;padding-bottom:18px}
+
+/* FINAL */
+.final{background:var(--black);padding:120px 48px;text-align:center;position:relative;overflow:hidden}
+@media(max-width:600px){.final{padding:80px 24px}}
+.final-deco{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;opacity:.06}
+.final h2{
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:clamp(60px,10vw,130px);line-height:.88;letter-spacing:-4px;
+  color:var(--white);margin-bottom:40px;position:relative;
+}
+.final h2 strong{font-family:'Syne',sans-serif;font-style:normal;font-weight:900;color:var(--lime)}
+.final-cta-row{display:inline-flex;gap:10px;flex-wrap:wrap;justify-content:center;position:relative}
+.btn-lime{
+  background:var(--lime);color:var(--black);font-family:'Syne',sans-serif;
+  font-size:16px;font-weight:800;padding:16px 44px;border-radius:100px;
+  border:none;text-decoration:none;display:inline-block;transition:transform .15s;
+}
+.btn-lime:hover{transform:scale(1.03)}
+.final-meta{font-size:12px;color:rgba(255,255,255,.35);margin-top:22px;letter-spacing:.5px;position:relative}
+
+footer{background:var(--black);border-top:1px solid rgba(255,255,255,.06);padding:26px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+@media(max-width:600px){footer{padding:22px 24px}}
+.ft-left{font-size:11px;color:rgba(255,255,255,.18);font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.ft-links{display:flex;gap:18px}
+.ft-links a{font-size:11px;color:rgba(255,255,255,.26);text-decoration:none;transition:color .15s}
+.ft-links a:hover{color:rgba(255,255,255,.8)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-wordmark">Clico <span>/</span> ODS <span>/</span> AI Writing Challenge</div>
+  <a href="#register-cta" class="nav-pill">Register →</a>
+</nav>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero">
+  <div class="hero-circle"></div>
+  <div class="hero-circle2"></div>
+
+  <div class="hero-left">
+    <div class="hero-eyebrow"><span class="eyebrow-dot"></span>Apr 17 – 25 &nbsp;·&nbsp; Pan-India &nbsp;·&nbsp; All branches</div>
+    <h1>AI Writing<br><strong>Challenge.</strong></h1>
+    <p class="hero-desc"><strong style="color:var(--black);font-weight:900">9 days to register &amp; win ₹10,000.</strong> Register by Apr 22. Submit your best AI-assisted writing between Apr 22–25. Real cash prizes, real easy.</p>
+    <div class="hero-actions">
+      <a href="#register-cta" class="btn-dark">Register free →</a>
+      <a href="#how" class="btn-outline">How it works</a>
+    </div>
+    <div class="stat-row">
+      <div class="stat-pill"><span class="sdot"></span>All branches</div>
+      <div class="stat-pill"><span class="sdot"></span>No coding needed</div>
+      <div class="stat-pill"><span class="sdot"></span>Register by Apr 22</div>
+      <div class="stat-pill"><span class="sdot"></span>Pan-India</div>
+    </div>
+  </div>
+
+  <div class="hero-floats">
+    <!-- Countdown card — targets registration deadline Apr 22 -->
+    <div class="float-card fc-black">
+      <div class="fc-label">Registration closes in</div>
+      <div class="cd-grid">
+        <div class="cd-cell"><span class="cd-num" id="cd-d">—</span><span class="cd-unit">days</span></div>
+        <div class="cd-cell"><span class="cd-num" id="cd-h">—</span><span class="cd-unit">hrs</span></div>
+        <div class="cd-cell"><span class="cd-num" id="cd-m">—</span><span class="cd-unit">min</span></div>
+        <div class="cd-cell"><span class="cd-num" id="cd-s">—</span><span class="cd-unit">sec</span></div>
+      </div>
+    </div>
+    <!-- Prize card -->
+    <div class="float-card fc-orange">
+      <svg style="position:absolute;right:-10px;bottom:-10px;opacity:.2" width="120" height="120" viewBox="0 0 120 120" fill="none">
+        <path d="M60 0 L63 55 L120 60 L63 65 L60 120 L57 65 L0 60 L57 55 Z" fill="white"/>
+        <path d="M60 20 L62 55 L100 60 L62 65 L60 100 L58 65 L20 60 L58 55 Z" fill="white" opacity=".6"/>
+      </svg>
+      <div class="fc-label">Prize pool</div>
+      <div class="fc-val">₹20K+</div>
+      <div class="fc-sub">Unlocks up to ₹26,500 as the community grows</div>
+    </div>
+    <!-- Organisers card -->
+    <div class="float-card fc-lime">
+      <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+        <rect width="44" height="44" rx="12" fill="rgba(0,0,0,0.12)"/>
+        <path d="M16 10h12v14a6 6 0 01-12 0V10z" stroke="rgba(0,0,0,0.6)" stroke-width="2" stroke-linejoin="round" fill="none"/>
+        <path d="M16 14H11a4 4 0 004 4h1M28 14h5a4 4 0 01-4 4h-1" stroke="rgba(0,0,0,0.6)" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <line x1="22" y1="24" x2="22" y2="32" stroke="rgba(0,0,0,0.5)" stroke-width="2" stroke-linecap="round"/>
+        <rect x="16" y="32" width="12" height="2.5" rx="1.25" fill="rgba(0,0,0,0.5)"/>
+      </svg>
+      <div>
+        <div style="font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:rgba(0,0,0,.4);margin-bottom:3px">Organised by</div>
+        <div style="font-size:16px;font-weight:900;letter-spacing:-.5px;color:var(--black)">Clico × ODS</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <span class="hi">Register</span><span>·</span><span>Install</span><span>·</span><span class="hi">Write</span><span>·</span><span>Screenshot</span><span>·</span><span class="hi">Submit & win</span><span>·</span><span>₹20,000+ prizes</span><span>·</span><span class="hi">All students welcome</span><span>·</span><span>Apr 17 – 25</span><span>·</span>
+    <span class="hi">Register</span><span>·</span><span>Install</span><span>·</span><span class="hi">Write</span><span>·</span><span>Screenshot</span><span>·</span><span class="hi">Submit & win</span><span>·</span><span>₹20,000+ prizes</span><span>·</span><span class="hi">All students welcome</span><span>·</span><span>Apr 17 – 25</span><span>·</span>
+  </div>
+</div>
+
+<!-- ═══════════════ HOW IT WORKS ═══════════════ -->
+<section class="how" id="how">
+  <div class="how-grid-bg"></div>
+  <div class="section-label" style="position:relative"><span>How it works</span></div>
+  <h2>Four steps.<br><strong>That's it.</strong></h2>
+  <div class="steps">
+
+    <div class="step">
+      <div class="step-graphic">
+        <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+          <rect width="52" height="52" rx="14" fill="#F0EBE3"/>
+          <rect x="14" y="16" width="24" height="3" rx="1.5" fill="#0F0E0E" opacity=".15"/>
+          <rect x="14" y="22" width="18" height="3" rx="1.5" fill="#0F0E0E" opacity=".15"/>
+          <rect x="14" y="28" width="21" height="3" rx="1.5" fill="#0F0E0E" opacity=".15"/>
+          <circle cx="38" cy="36" r="9" fill="#D94F2B"/>
+          <path d="M34 36l2.5 2.5L42 33" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="step-n">1</div>
+      <h3>Register + join WhatsApp</h3>
+      <p>Fill a quick form and join our WhatsApp group for updates, tips, and the submission link. Free. Under a minute.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-graphic">
+        <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+          <rect width="52" height="52" rx="14" fill="#E8F5E0"/>
+          <rect x="12" y="15" width="28" height="20" rx="4" stroke="#0F0E0E" stroke-width="1.8" stroke-opacity=".25" fill="none"/>
+          <rect x="12" y="15" width="28" height="6" rx="4" fill="#0F0E0E" fill-opacity=".1"/>
+          <circle cx="32" cy="18" r="2" fill="#C8EA48"/>
+          <path d="M20 26h6v3a2 2 0 004 0v-3h2v6H20v-6z" fill="#0F0E0E" fill-opacity=".18"/>
+        </svg>
+      </div>
+      <div class="step-n">2</div>
+      <h3>Install Clico</h3>
+      <p>We'll share the install link in the WhatsApp group. Free Chrome extension — no API key, no account needed to start.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-graphic">
+        <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+          <rect width="52" height="52" rx="14" fill="#FFF0E8"/>
+          <rect x="12" y="20" width="22" height="14" rx="3" stroke="#D94F2B" stroke-width="1.8" fill="none" stroke-opacity=".4"/>
+          <rect x="15" y="24" width="12" height="2" rx="1" fill="#D94F2B" fill-opacity=".35"/>
+          <rect x="15" y="28" width="8" height="2" rx="1" fill="#D94F2B" fill-opacity=".25"/>
+          <rect x="28" y="28" width="14" height="11" rx="3" fill="#D94F2B" fill-opacity=".8"/>
+          <circle cx="35" cy="33.5" r="2.5" fill="white" fill-opacity=".9"/>
+          <rect x="31" y="28" width="4" height="2" rx="1" fill="#D94F2B"/>
+        </svg>
+      </div>
+      <div class="step-n">3</div>
+      <h3>Use it, screenshot it</h3>
+      <p>Use Clico on real writing tasks — emails, assignments, notes, DMs. Pick your best screenshot for submission.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-graphic">
+        <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+          <rect width="52" height="52" rx="14" fill="#E8EDFF"/>
+          <path d="M38 14L14 24l10 4 4 10z" stroke="#0F0E0E" stroke-width="1.8" stroke-linejoin="round" fill="none" stroke-opacity=".3"/>
+          <path d="M24 28l14-14" stroke="#0F0E0E" stroke-width="1.8" stroke-linecap="round" stroke-opacity=".3"/>
+          <path d="M38 32l1.2 2.6 2.8.4-2 2 .5 2.8L38 38.4l-2.5 1.4.5-2.8-2-2 2.8-.4z" fill="#C8EA48"/>
+        </svg>
+      </div>
+      <div class="step-n">4</div>
+      <h3>Submit Apr 22 – 25</h3>
+      <p>Submission form opens Apr 22, announced in WhatsApp. Share your screenshot + a 100–150 word write-up before Apr 25, 11:59 PM.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════ PRIZES ═══════════════ -->
+<section class="prizes" id="prizes">
+  <svg class="prizes-deco" width="500" height="500" viewBox="0 0 500 500" fill="none">
+    <path d="M250 0 L260 240 L500 250 L260 260 L250 500 L240 260 L0 250 L240 240 Z" fill="white"/>
+  </svg>
+  <div class="section-label" style="color:rgba(255,255,255,.28)"><span>Prize pool</span></div>
+  <h2>₹20,000+<br><strong>in cash.</strong></h2>
+  <p class="prize-subtitle"><b>₹17,000 guaranteed</b> across the top 3. More prizes unlock as the community grows — up to <b>₹26,500 total</b> and 30 winners.</p>
+
+  <div class="prize-grid">
+    <div class="prize-card p1">
+      <svg class="pc-deco" width="100" height="100" viewBox="0 0 100 100" fill="none">
+        <circle cx="50" cy="50" r="40" fill="rgba(0,0,0,0.15)"/>
+        <circle cx="50" cy="50" r="28" fill="rgba(0,0,0,0.15)"/>
+        <path d="M50 30l4 12h13l-10 8 4 12-11-8-11 8 4-12-10-8h13z" fill="rgba(0,0,0,0.2)"/>
+      </svg>
+      <div class="prize-pos">1st Place</div>
+      <div class="prize-val">₹10,000</div>
+      <div class="prize-note">Paid via UPI within 5 working days</div>
+    </div>
+    <div class="prize-card p2">
+      <svg class="pc-deco" width="100" height="100" viewBox="0 0 100 100" fill="none">
+        <circle cx="50" cy="50" r="40" fill="rgba(255,255,255,0.06)"/>
+        <circle cx="50" cy="50" r="28" fill="rgba(255,255,255,0.06)"/>
+      </svg>
+      <div class="prize-pos">2nd Place</div>
+      <div class="prize-val">₹5,000</div>
+      <div class="prize-note">Paid via UPI within 5 working days</div>
+    </div>
+    <div class="prize-card p3">
+      <svg class="pc-deco" width="100" height="100" viewBox="0 0 100 100" fill="none">
+        <circle cx="50" cy="50" r="40" fill="rgba(255,255,255,0.04)"/>
+        <circle cx="50" cy="50" r="28" fill="rgba(255,255,255,0.04)"/>
+      </svg>
+      <div class="prize-pos">3rd Place</div>
+      <div class="prize-val">₹2,000</div>
+      <div class="prize-note">Paid via UPI within 5 working days</div>
+    </div>
+  </div>
+
+  <!-- MILESTONE UNLOCKS -->
+  <div class="unlocks">
+    <div class="unlock-head">Unlocks as we grow</div>
+    <div class="unlock-grid">
+      <div class="unlock-card">
+        <span class="unlock-goal">🎯 300+ signups</span>
+        <div class="unlock-title">4th – 10th place</div>
+        <div class="unlock-detail"><span class="unlock-amount">₹500</span> each for 7 runners-up — unlocks an extra <span class="unlock-amount">₹3,500</span> in prizes.</div>
+      </div>
+      <div class="unlock-card">
+        <span class="unlock-goal">🚀 500+ signups</span>
+        <div class="unlock-title">11th – 30th place</div>
+        <div class="unlock-detail"><span class="unlock-amount">₹200</span> each for 20 more winners — another <span class="unlock-amount">₹4,000</span> unlocked. Total pool: <span class="unlock-amount">₹24,500</span>.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="prize-extras">
+    <div class="prize-tag">Certificates for all finalists</div>
+    <div class="prize-tag">Winners featured on ODS</div>
+  </div>
+</section>
+
+<!-- ═══════════════ JUDGING ═══════════════ -->
+<section class="judging">
+  <svg class="judging-deco" width="400" height="400" viewBox="0 0 400 400" fill="none">
+    <circle cx="200" cy="200" r="180" stroke="white" stroke-width="40"/>
+    <circle cx="200" cy="200" r="100" stroke="white" stroke-width="25"/>
+  </svg>
+  <div class="section-label"><span>Judging criteria</span></div>
+  <h2>How we<br><strong>pick winners.</strong></h2>
+  <div class="criteria">
+    <div class="criterion">
+      <div class="crit-graphic">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="24" r="24" fill="rgba(255,255,255,0.1)"/>
+          <path d="M24 13a9 9 0 016.4 15.3c-.9.9-1.4 2-1.4 3.2V33h-10v-1.5c0-1.2-.5-2.3-1.4-3.2A9 9 0 0124 13z" stroke="white" stroke-width="1.8" stroke-linejoin="round" fill="none" opacity=".7"/>
+          <path d="M20 36h8M21 39h6" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity=".5"/>
+        </svg>
+      </div>
+      <div class="criterion-pct">40%</div>
+      <h3>Creativity</h3>
+      <p>Did you find an original, interesting, or unexpected use case? Surprise the judges.</p>
+    </div>
+    <div class="criterion">
+      <div class="crit-graphic">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="24" r="24" fill="rgba(255,255,255,0.1)"/>
+          <rect x="12" y="30" width="5" height="8" rx="1.5" fill="white" fill-opacity=".3"/>
+          <rect x="21" y="22" width="5" height="16" rx="1.5" fill="white" fill-opacity=".5"/>
+          <rect x="30" y="14" width="5" height="24" rx="1.5" fill="white" fill-opacity=".8"/>
+          <path d="M12 32l9-12 9-8" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 2" opacity=".4"/>
+        </svg>
+      </div>
+      <div class="criterion-pct">40%</div>
+      <h3>Real-world impact</h3>
+      <p>How much did AI actually help you? Show genuine value — time saved, quality improved.</p>
+    </div>
+    <div class="criterion">
+      <div class="crit-graphic">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="24" r="24" fill="rgba(255,255,255,0.1)"/>
+          <path d="M30 14l4 4-16 16H14v-4L30 14z" stroke="white" stroke-width="1.8" stroke-linejoin="round" fill="none" opacity=".7"/>
+          <path d="M28 16l4 4" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity=".5"/>
+          <line x1="14" y1="38" x2="34" y2="38" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity=".3"/>
+        </svg>
+      </div>
+      <div class="criterion-pct">20%</div>
+      <h3>Write-up clarity</h3>
+      <p>Can you explain your use case clearly in 100–150 words? Strong writing earns extra points.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ ELIGIBILITY ═══════════════ -->
+<section class="elig">
+  <svg class="elig-deco" width="260" height="260" viewBox="0 0 260 260" fill="none">
+    <path d="M130 40L240 90l-110 50L20 90z" stroke="black" stroke-width="8" stroke-linejoin="round" fill="none"/>
+    <path d="M60 115v60c0 0 30 25 70 25s70-25 70-25v-60" stroke="black" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <line x1="240" y1="90" x2="240" y2="140" stroke="black" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="240" cy="148" r="10" fill="black"/>
+  </svg>
+  <div>
+    <div class="section-label"><span>Eligibility & rules</span></div>
+    <h2>Who can<br><strong>participate.</strong></h2>
+  </div>
+  <div>
+    <ul class="rule-list">
+      <li class="rule-item"><span class="rule-num">01</span><div class="rule-text"><h4>Any college student in India</h4><p>All branches, all years. Engineering, management, arts, science — no restrictions.</p></div></li>
+      <li class="rule-item"><span class="rule-num">02</span><div class="rule-text"><h4>Individual entries only</h4><p>One person, one submission. No team entries, no multiple submissions.</p></div></li>
+      <li class="rule-item"><span class="rule-num">03</span><div class="rule-text"><h4>Real use cases only</h4><p>Fabricated or staged screenshots will be disqualified. Show actual work on real tasks.</p></div></li>
+      <li class="rule-item"><span class="rule-num">04</span><div class="rule-text"><h4>Register by Apr 22, submit by Apr 25</h4><p>Registration closes Apr 22, 11:59 PM IST. Submissions close Apr 25, 11:59 PM IST. No late entries.</p></div></li>
+      <li class="rule-item"><span class="rule-num">05</span><div class="rule-text"><h4>Valid UPI required for payout</h4><p>Winners must share a working UPI ID for the ₹ prize to be transferred.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════ TIMELINE ═══════════════ -->
+<section class="timeline-sec">
+  <div class="tl-bg"></div>
+  <div class="section-label" style="position:relative"><span>Timeline</span></div>
+  <h2>9 days.<br><strong>Move fast.</strong></h2>
+  <div class="tl-grid">
+    <div class="tl-cell active">
+      <div class="live-dot"></div>
+      <div class="tl-phase">Phase 01</div>
+      <div class="tl-bar"><div class="tl-fill" style="width:100%"></div></div>
+      <div class="tl-day">Apr 17 – 22</div>
+      <div class="tl-event">Registration window — sign up & join WhatsApp group</div>
+    </div>
+    <div class="tl-cell">
+      <div class="tl-phase">Phase 02</div>
+      <div class="tl-bar"><div class="tl-fill" style="width:0%"></div></div>
+      <div class="tl-day">Apr 22 – 25</div>
+      <div class="tl-event">Submission window — submit your screenshot + write-up</div>
+    </div>
+    <div class="tl-cell">
+      <div class="tl-phase">Phase 03</div>
+      <div class="tl-bar"><div class="tl-fill" style="width:0%"></div></div>
+      <div class="tl-day">Apr 26 – 27</div>
+      <div class="tl-event">Judging by the ODS & Clico team</div>
+    </div>
+    <div class="tl-cell">
+      <div class="tl-phase">Phase 04</div>
+      <div class="tl-bar"><div class="tl-fill" style="width:0%"></div></div>
+      <div class="tl-day">Apr 28</div>
+      <div class="tl-event">Winners announced. UPI payouts within 5 working days.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FAQ ═══════════════ -->
+<section class="faq">
+  <svg style="position:absolute;right:48px;top:96px;opacity:.06;pointer-events:none" width="200" height="280" viewBox="0 0 200 280" fill="none">
+    <path d="M60 60c0-22 18-40 40-40s40 18 40 40c0 18-12 32-30 38-10 3-10 12-10 12v12" stroke="black" stroke-width="18" stroke-linecap="round"/>
+    <circle cx="100" cy="190" r="10" fill="black"/>
+  </svg>
+  <h2>Questions<br><strong>answered.</strong></h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Is this really free to enter?<div class="faq-icon"><svg viewBox="0 0 10 10" fill="none"><line x1="5" y1="1" x2="5" y2="9" stroke-width="1.5" stroke-linecap="round"/><line x1="1" y1="5" x2="9" y2="5" stroke-width="1.5" stroke-linecap="round"/></svg></div></button>
+      <div class="faq-a">Yes — completely free. No registration fee, no premium tier, nothing to pay. Clico itself is also free to install and use.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Do I need any technical background?<div class="faq-icon"><svg viewBox="0 0 10 10" fill="none"><line x1="5" y1="1" x2="5" y2="9" stroke-width="1.5" stroke-linecap="round"/><line x1="1" y1="5" x2="9" y2="5" stroke-width="1.5" stroke-linecap="round"/></svg></div></button>
+      <div class="faq-a">Not at all. Open to every student regardless of branch or year. If you write — emails, assignments, posts, notes — you qualify.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What counts as a valid submission?<div class="faq-icon"><svg viewBox="0 0 10 10" fill="none"><line x1="5" y1="1" x2="5" y2="9" stroke-width="1.5" stroke-linecap="round"/><line x1="1" y1="5" x2="9" y2="5" stroke-width="1.5" stroke-linecap="round"/></svg></div></button>
+      <div class="faq-a">A screenshot of Clico in use on a real writing task, plus a 100–150 word description explaining the use case and its impact. Submit via the form shared in our WhatsApp group from Apr 22 onwards.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How do the milestone prizes work?<div class="faq-icon"><svg viewBox="0 0 10 10" fill="none"><line x1="5" y1="1" x2="5" y2="9" stroke-width="1.5" stroke-linecap="round"/><line x1="1" y1="5" x2="9" y2="5" stroke-width="1.5" stroke-linecap="round"/></svg></div></button>
+      <div class="faq-a">The top 3 prizes (₹17,000 total) are guaranteed. If we hit 300 registrations, 4th–10th places each win ₹500. At 500 registrations, 11th–30th each win ₹200. Share the event to unlock more prizes for everyone.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How is prize money paid out?<div class="faq-icon"><svg viewBox="0 0 10 10" fill="none"><line x1="5" y1="1" x2="5" y2="9" stroke-width="1.5" stroke-linecap="round"/><line x1="1" y1="5" x2="9" y2="5" stroke-width="1.5" stroke-linecap="round"/></svg></div></button>
+      <div class="faq-a">Via UPI directly to winners within 5 working days of the announcement. Winners will be contacted through their registered email for UPI details.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Can I enter from any college in India?<div class="faq-icon"><svg viewBox="0 0 10 10" fill="none"><line x1="5" y1="1" x2="5" y2="9" stroke-width="1.5" stroke-linecap="round"/><line x1="1" y1="5" x2="9" y2="5" stroke-width="1.5" stroke-linecap="round"/></svg></div></button>
+      <div class="faq-a">Yes — pan-India challenge. Any enrolled college student from any institution in India can participate.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Who is organising this?<div class="faq-icon"><svg viewBox="0 0 10 10" fill="none"><line x1="5" y1="1" x2="5" y2="9" stroke-width="1.5" stroke-linecap="round"/><line x1="1" y1="5" x2="9" y2="5" stroke-width="1.5" stroke-linecap="round"/></svg></div></button>
+      <div class="faq-a">Organised by Open Dev Society (ODS), powered by Clico — a free AI writing Chrome extension. Questions? Reach out on Instagram or Discord.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FINAL CTA ═══════════════ -->
+<section class="final" id="register-cta">
+  <svg class="final-deco" width="700" height="700" viewBox="0 0 700 700" fill="none">
+    <path d="M350 50L370 330 650 350 370 370 350 650 330 370 50 350 330 330Z" fill="white"/>
+    <path d="M350 150L364 330 520 350 364 370 350 550 336 370 180 350 336 330Z" fill="white"/>
+  </svg>
+  <h2>Register<br><strong>& win ₹10K.</strong></h2>
+  <div class="final-cta-row">
+    <a href="#REGISTRATION_FORM_LINK" class="btn-lime" target="_blank" rel="noopener">Register free →</a>
+  </div>
+  <p class="final-meta">Free &nbsp;·&nbsp; All Indian college students &nbsp;·&nbsp; Register by Apr 22 &nbsp;·&nbsp; Prizes up to ₹26,500</p>
+</section>
+
+<footer>
+  <div class="ft-left">Clico × Open Dev Society · 2026</div>
+  <div class="ft-links">
+    <a href="mailto:hey@tryclico.com">Contact</a>
+  </div>
+</footer>
+
+<script>
+function toggleFaq(btn){
+  const item=btn.parentElement;
+  document.querySelectorAll('.faq-item.open').forEach(el=>{if(el!==item)el.classList.remove('open')});
+  item.classList.toggle('open');
+}
+/* Registration closes: Apr 22, 2026, 11:59:59 PM IST (IST = UTC+5:30) */
+(function(){
+  const deadline = new Date('2026-04-22T23:59:59+05:30').getTime();
+  function tick(){
+    const diff = deadline - Date.now();
+    if (diff <= 0){
+      ['cd-d','cd-h','cd-m','cd-s'].forEach(id => document.getElementById(id).textContent = '00');
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor(diff % 86400000 / 3600000);
+    const m = Math.floor(diff % 3600000 / 60000);
+    const s = Math.floor(diff % 60000 / 1000);
+    document.getElementById('cd-d').textContent = String(d).padStart(2,'0');
+    document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>
+</body>
+</html>
